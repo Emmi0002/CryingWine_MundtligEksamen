@@ -3,7 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import Heading from "../components/Heading.astro";
 import ProductCard from "../components/ProductCard.astro";
 import Button from "../components/Button.astro";
-import Text from "../components/Text.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
 
 // URL til vores Supabase projekt/database
 const SUPABASE_URL = "https://lbkrfecnofyqzkuhuins.supabase.co";
@@ -37,19 +37,56 @@ console.log(CryingWine);
 ---
 
 <MainLayout title="På vinhylden">
-  <main class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)] my-40 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]">
+  <main
+    class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)] my-40 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]"
+  >
     <div class="flex flex-col md:gap-[var(--gapweb-s)]">
       <Heading htmlheading="h1" size="large">Hele vinhylden</Heading>
-      <div class="flex gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)] carousel">
-        <Button variant="secondary" form="pill" type="button" data-filter="all">ALLE</Button>
-        <Button variant="secondary" form="pill" type="button" data-filter="white">HVID</Button>
-        <Button variant="secondary" form="pill" type="button" data-filter="orange">ORANGE</Button>
-        <Button variant="secondary" form="pill" type="button" data-filter="rose">ROSÈ</Button>
-        <Button variant="secondary" form="pill" type="button" data-filter="red">RØD</Button>
-        <Button variant="secondary" form="pill" type="button" data-filter="bubbles">BOBLER</Button>
-        <Button variant="secondary" form="pill" type="button" data-filter="natur">NATUR</Button>
-        <Button variant="secondary" form="pill" type="button" data-filter="alkoholfri">ALKOHOLFRI</Button>
-        <Button variant="secondary" form="pill" href="/smagskasser">SMAGSKASSER </Button>
+      <div
+        class="flex gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)] carousel"
+      >
+        <Button variant="secondary" form="pill" type="button" data-filter="all"
+          >ALLE</Button
+        >
+        <Button
+          variant="secondary"
+          form="pill"
+          type="button"
+          data-filter="white">HVID</Button
+        >
+        <Button
+          variant="secondary"
+          form="pill"
+          type="button"
+          data-filter="orange">ORANGE</Button
+        >
+        <Button variant="secondary" form="pill" type="button" data-filter="rose"
+          >ROSÈ</Button
+        >
+        <Button variant="secondary" form="pill" type="button" data-filter="red"
+          >RØD</Button
+        >
+        <Button
+          variant="secondary"
+          form="pill"
+          type="button"
+          data-filter="bubbles">BOBLER</Button
+        >
+        <Button
+          variant="secondary"
+          form="pill"
+          type="button"
+          data-filter="natur">NATUR</Button
+        >
+        <Button
+          variant="secondary"
+          form="pill"
+          type="button"
+          data-filter="alkoholfri">ALKOHOLFRI</Button
+        >
+        <Button variant="secondary" form="pill" href="/smagskasser"
+          >SMAGSKASSER
+        </Button>
         <Button variant="secondary" form="pill" href="/merch">MERCH</Button>
       </div>
     </div>
@@ -70,12 +107,14 @@ console.log(CryingWine);
         ))
       }
     </div>
+    <ScrollToTop />
   </main>
 
   <script>
     const filters = {
       all: () => true,
-      white: (category) => ["HVID", "HVID/ALKOHOLFRI", "HVID/NATUR"].includes(category),
+      white: (category) =>
+        ["HVID", "HVID/ALKOHOLFRI", "HVID/NATUR"].includes(category),
       orange: (category) => category === "ORANGE",
       rose: (category) => ["ROSE", "ROSÉ"].includes(category),
       red: (category) => ["RØD", "RØD/NATUR"].includes(category),
@@ -98,12 +137,17 @@ console.log(CryingWine);
       });
 
       buttons.forEach((button) => {
-        button.toggleAttribute("aria-pressed", button.dataset.filter === filterName);
+        button.toggleAttribute(
+          "aria-pressed",
+          button.dataset.filter === filterName,
+        );
       });
     };
 
     buttons.forEach((button) => {
-      button.addEventListener("click", () => applyFilter(button.dataset.filter || "all"));
+      button.addEventListener("click", () =>
+        applyFilter(button.dataset.filter || "all"),
+      );
     });
 
     applyFilter("all");

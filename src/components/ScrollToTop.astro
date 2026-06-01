@@ -1,0 +1,63 @@
+---
+import Text from "./Text.astro";
+---
+
+--- import Text from "./Text.astro"; ---
+
+<!-- Scroll-to-top knap - Vises først når brugeren har scrollet mere end 300px ned på siden -->
+<div
+  x-data="{ visible: false }"
+  x-init="
+    window.addEventListener('scroll', () => {
+      visible = window.scrollY > 300
+    })
+  "
+>
+  <!-- Knappen:
+    - Bliver kun vist når 'visible' er true
+    - Ved klik scroller den tilbage til toppen -->
+  <button
+    x-show="visible"
+    x-transition.opacity.duration.300ms
+    @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    aria-label="Til toppen"
+    class="group
+      /* Placering */
+      fixed bottom-10 right-10 z-50
+      /* Størrelse */
+      h-25 w-25
+      /* Blob baggrund */
+      bg-contain bg-center bg-no-repeat
+      /* Centrering af indhold */
+      flex flex-col items-center justify-center
+      /* Tekstfarve til pil */
+      text-white
+      /* Vis hånd-cursor ved hover */
+      cursor-pointer
+      /* Animationer */
+      transition-all duration-300"
+    style="background-image: url('/img/icon/blob/BackToTopBlob.webp')"
+  >
+    <!-- Style^ er Baggrunds blob -->
+    <!-- Pil-ikon -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      class="mb-1
+        h-6 w-6
+        transition-transform duration-300
+        group-hover:-translate-y-1"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 19V5m0 0-6 6m6-6 6 6"></path>
+    </svg>
+
+    <!-- Tekst -->
+    <Text teksttype="subtitle" weight="bold" color="Primary"> TIL TOPPEN </Text>
+  </button>
+</div>
