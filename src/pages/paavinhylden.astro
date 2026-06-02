@@ -37,120 +37,148 @@ console.log(CryingWine);
 ---
 
 <MainLayout title="På vinhylden">
-  <main
-    class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)] my-40 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]"
-  >
-    <div class="flex flex-col md:gap-[var(--gapweb-s)]">
+  <main class="mx-[var(--margin-mobile)] md:mx-[var(--margin-web)] my-40 flex flex-col gap-[var(--gapmobile-xl)] md:gap-[var(--gapweb-xl)]">
+    <section class="flex flex-col gap-[var(--gapmobile-s)] md:gap-[var(--gapweb-s)]">
       <Heading htmlheading="h1" size="large">Hele vinhylden</Heading>
-      <div
-        class="flex gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)] carousel"
-      >
-        <Button variant="secondary" form="pill" type="button" data-filter="all"
-          >ALLE</Button
-        >
-        <Button
-          variant="secondary"
-          form="pill"
-          type="button"
-          data-filter="white">HVID</Button
-        >
-        <Button
-          variant="secondary"
-          form="pill"
-          type="button"
-          data-filter="orange">ORANGE</Button
-        >
-        <Button variant="secondary" form="pill" type="button" data-filter="rose"
-          >ROSÈ</Button
-        >
-        <Button variant="secondary" form="pill" type="button" data-filter="red"
-          >RØD</Button
-        >
-        <Button
-          variant="secondary"
-          form="pill"
-          type="button"
-          data-filter="bubbles">BOBLER</Button
-        >
-        <Button
-          variant="secondary"
-          form="pill"
-          type="button"
-          data-filter="natur">NATUR</Button
-        >
-        <Button
-          variant="secondary"
-          form="pill"
-          type="button"
-          data-filter="alkoholfri">ALKOHOLFRI</Button
-        >
-        <Button variant="secondary" form="pill" href="/smagskasser"
-          >SMAGSKASSER
-        </Button>
-        <Button variant="secondary" form="pill" href="/merch">MERCH</Button>
-      </div>
-    </div>
-    <div
-      class="grid grid-cols-[repeat(auto-fit,minmax(160px,175px))] lg:grid-cols-[repeat(auto-fit,minmax(250px,290px))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center"
-      data-wine-grid
-    >
-      {
-        CryingWine.map((cryingwine) => (
-          <div
-            data-wine-card
-            data-category={String(cryingwine.Category ?? "")
-              .trim()
-              .toUpperCase()}
-          >
-            <ProductCard product={cryingwine} quantity={1} />
+
+      <article class="md:grid grid-cols-[1fr_3fr]">
+        <div class="md:grid grid-cols-[250px_auto] md:gap-[var(--gapweb-xxs)] hidden">
+          <div>
+            <Heading htmlheading="h3" size="small" color="black">Kategorier</Heading>
+            <ul id="categoryFilters">
+              <li>
+                <button type="button" data-title="Alle" data-filter="all" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Alle </button>
+              </li>
+              <li>
+                <button type="button" data-title="Hvid" data-filter="white" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Hvid </button>
+              </li>
+              <li>
+                <button type="button" data-title="Rød" data-filter="red" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Rød </button>
+              </li>
+              <li>
+                <button type="button" data-title="Rosé" data-filter="rose" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Rosé </button>
+              </li>
+              <li>
+                <button type="button" data-title="Orange" data-filter="orange" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Orange </button>
+              </li>
+              <li>
+                <button type="button" data-title="Bobler" data-filter="bubbles" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Bobler </button>
+              </li>
+              <li>
+                <button type="button" data-title="Natur" data-filter="natur" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Natur </button>
+              </li>
+              <li>
+                <button type="button" data-title="Alkoholfri" data-filter="alkoholfri" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Alkoholfri </button>
+              </li>
+              <li>
+                <a href="/smagskasser" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Smagskasser </a>
+              </li>
+              <li>
+                <a href="/merch" class="flex items-center gap-2 font-semibold hover:cursor-pointer"> Merch </a>
+              </li>
+            </ul>
           </div>
-        ))
-      }
-    </div>
+          <img src="/img/illustrations/CategoryLine.webp" alt="blå linje" class="" />
+        </div>
+
+        <div class="flex gap-[var(--gapmobile-s)] lg:gap-[var(--gapweb-s)] carousel md:hidden">
+          <Button variant="secondary" form="pill" type="button" data-filter="all">ALLE</Button>
+          <Button variant="secondary" form="pill" type="button" data-filter="white">HVID</Button>
+          <Button variant="secondary" form="pill" type="button" data-filter="orange">ORANGE</Button>
+          <Button variant="secondary" form="pill" type="button" data-filter="rose">ROSÈ</Button>
+          <Button variant="secondary" form="pill" type="button" data-filter="red">RØD</Button>
+          <Button variant="secondary" form="pill" type="button" data-filter="bubbles">BOBLER</Button>
+          <Button variant="secondary" form="pill" type="button" data-filter="natur">NATUR</Button>
+          <Button variant="secondary" form="pill" type="button" data-filter="alkoholfri">ALKOHOLFRI</Button>
+          <Button variant="secondary" form="pill" href="/smagskasser">SMAGSKASSER </Button>
+          <Button variant="secondary" form="pill" href="/merch">MERCH</Button>
+        </div>
+        <div>
+          <Heading htmlheading="h2" size="medium" stylingclasses="mt-10 md:mt-0">
+            <span id="categoryHeading">Alle</span>
+          </Heading>
+          <div class="grid grid-cols-[repeat(auto-fit,minmax(160px,175px))] lg:grid-cols-[repeat(auto-fit,minmax(250px,290px))] gap-[var(--gapmobile-m)] mt-[var(--gapmobile-l)] md:mt-[var(--gapweb-l)] justify-center md:justify-start" data-wine-grid>
+            {
+              CryingWine.map((cryingwine) => (
+                <div
+                  data-wine-card
+                  data-category={String(cryingwine.Category ?? "")
+                    .trim()
+                    .toUpperCase()}
+                >
+                  <ProductCard product={cryingwine} quantity={1} />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </article>
+    </section>
     <ScrollToTop />
   </main>
+</MainLayout>
 
-  <script>
-    const filters = {
-      all: () => true,
-      white: (category) =>
-        ["HVID", "HVID/ALKOHOLFRI", "HVID/NATUR"].includes(category),
-      orange: (category) => category === "ORANGE",
-      rose: (category) => ["ROSE", "ROSÉ"].includes(category),
-      red: (category) => ["RØD", "RØD/NATUR"].includes(category),
-      bubbles: (category) => category === "BOBLER",
-      natur: (category) => category.includes("NATUR"),
-      alkoholfri: (category) => category.includes("ALKOHOLFRI"),
-      smagskasser: (category) => category === "SMAGSKASSER",
-      merch: (category) => category === "MERCH",
-    };
+<script>
+  const filters = {
+    all: () => true,
+    white: (category) => ["HVID", "HVID/ALKOHOLFRI", "HVID/NATUR"].includes(category),
+    orange: (category) => category === "ORANGE",
+    rose: (category) => ["ROSE", "ROSÉ"].includes(category),
+    red: (category) => ["RØD", "RØD/NATUR"].includes(category),
+    bubbles: (category) => category === "BOBLER",
+    natur: (category) => category.includes("NATUR"),
+    alkoholfri: (category) => category.includes("ALKOHOLFRI"),
+    smagskasser: (category) => category === "SMAGSKASSER",
+    merch: (category) => category === "MERCH",
+  };
 
-    const cards = document.querySelectorAll<HTMLElement>("[data-wine-card]");
-    const buttons = document.querySelectorAll<HTMLElement>("[data-filter]");
+  const cards = document.querySelectorAll<HTMLElement>("[data-wine-card]");
+  const buttons = document.querySelectorAll<HTMLElement>("[data-filter]");
+  const categoryButtons = Array.from(document.querySelectorAll<HTMLElement>("#categoryFilters button[data-filter]"));
+  const heading = document.querySelector<HTMLElement>("#categoryHeading");
 
-    const applyFilter = (filterName) => {
-      const matcher = filters[filterName] ?? filters.all;
+  function clearActive() {
+    categoryButtons.forEach((button) => {
+      button.classList.remove("font-bold", "text-[var(--color-accent)]");
+      button.classList.add("font-semibold");
+      button.setAttribute("aria-pressed", "false");
+    });
+  }
 
-      cards.forEach((card) => {
-        const category = (card.dataset.category || "").trim().toUpperCase();
-        card.classList.toggle("hidden", !matcher(category));
-      });
+  function setActiveBtn(btn) {
+    clearActive();
+    if (btn) {
+      btn.classList.add("font-bold", "text-[var(--color-accent)]");
+      btn.classList.remove("font-semibold");
+      btn.setAttribute("aria-pressed", "true");
+    }
+  }
 
-      buttons.forEach((button) => {
-        button.toggleAttribute(
-          "aria-pressed",
-          button.dataset.filter === filterName,
-        );
-      });
-    };
+  const applyFilter = (filterName, activeBtn = null) => {
+    const matcher = filters[filterName] ?? filters.all;
 
-    buttons.forEach((button) => {
-      button.addEventListener("click", () =>
-        applyFilter(button.dataset.filter || "all"),
-      );
+    cards.forEach((card) => {
+      const category = (card.dataset.category || "").trim().toUpperCase();
+      card.classList.toggle("hidden", !matcher(category));
     });
 
-    applyFilter("all");
-    history.replaceState(null, "", window.location.pathname);
-  </script>
-</MainLayout>
+    buttons.forEach((button) => {
+      button.toggleAttribute("aria-pressed", button.dataset.filter === filterName);
+    });
+
+    setActiveBtn(activeBtn || categoryButtons.find((button) => button.dataset.filter === filterName) || null);
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => applyFilter(button.dataset.filter || "all", button));
+  });
+
+  applyFilter("all");
+  history.replaceState(null, "", window.location.pathname);
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (heading) heading.textContent = button.dataset.title || "Alle";
+    });
+  });
+</script>
