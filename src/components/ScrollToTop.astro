@@ -2,17 +2,12 @@
 import Text from "./Text.astro";
 ---
 
---- import Text from "./Text.astro"; ---
-
 <!-- Scroll-to-top knap - Vises først når brugeren har scrollet mere end 300px ned på siden -->
-<div
-  x-data="{ visible: false }"
-  x-init="
+<div x-data="{ visible: false }" x-init="
     window.addEventListener('scroll', () => {
       visible = window.scrollY > 300
     })
-  "
->
+  ">
   <!-- Knappen:
     - Bliver kun vist når 'visible' er true
     - Ved klik scroller den tilbage til toppen -->
@@ -40,21 +35,11 @@ import Text from "./Text.astro";
   >
     <!-- Style^ er Baggrunds blob -->
     <!-- Pil-ikon -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="3"
-      class="mb-1
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="mb-1
         h-6 w-6
         transition-transform duration-300
-        group-hover:-translate-y-1"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M12 19V5m0 0-6 6m6-6 6 6"></path>
+        group-hover:-translate-y-1">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6"></path>
     </svg>
 
     <!-- Tekst -->
