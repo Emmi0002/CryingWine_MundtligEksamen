@@ -67,18 +67,7 @@ import Link from "./Link.astro";
 
       <!-- ACCOUNT ICON -->
       <a href="/konto" class="hidden lg:flex">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.1"
-          role="img"
-          aria-label="Min konto"
-          class="text-(var(--color-surfacedarker))"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" role="img" aria-label="Min konto" class="text-(var(--color-surfacedarker))">
           <path d="M20 21a8 8 0 1 0-16 0"></path>
           <circle cx="12" cy="7" r="4"></circle>
         </svg>
@@ -99,42 +88,22 @@ import Link from "./Link.astro";
         <!-- BUTTON -->
         <label for="mobile-menu" class="cursor-pointer relative z-50 block">
           <!-- hamburger -->
-          <svg
-            class="peer-checked:hidden text-[var(--color-surfacedarker)]"
-            xmlns="http://www.w3.org/2000/svg"
-            width="34"
-            height="34"
-            viewBox="0 0 512 512"
-            fill="currentColor"
-            role="img"
-            aria-label="Åbn menu"
-          >
+          <svg class="peer-checked:hidden text-[var(--color-surfacedarker)]" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 512 512" fill="currentColor" role="img" aria-label="Åbn menu">
             <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"></path>
           </svg>
 
           <!-- close -->
-          <svg
-            class="hidden peer-checked:block text-primary-content"
-            xmlns="http://www.w3.org/2000/svg"
-            width="34"
-            height="34"
-            viewBox="0 0 512 512"
-            fill="currentColor"
-            role="img"
-            aria-label="Luk menu"
-          >
+          <svg class="hidden peer-checked:block text-primary-content" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 512 512" fill="currentColor" role="img" aria-label="Luk menu">
             <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"></polygon>
           </svg>
         </label>
 
         <!-- OVERLAY -->
-        <div
-          class="fixed top-0 right-0 h-screen w-2/3 bg-primary text-primary-content translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out z-40 flex flex-col px-8 pt-28"
-        >
+        <div class="fixed top-0 right-0 h-screen w-2/3 bg-primary text-primary-content translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out z-40 flex flex-col px-8 pt-28">
           <!-- menu -->
           <ul class="flex flex-col gap-8 text-2xl font-semibold text-(var(--color-surfacedarker)) items-end">
             <li>
-              <Link size="large" href="/paahylden">På hylden</Link>
+              <Link size="large" href="/paavinhylden">På vinhylden</Link>
             </li>
 
             <li>
